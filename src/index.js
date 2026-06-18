@@ -10,6 +10,7 @@ import AboutPage from './landing_page/about/AboutPage';
 import PricingPage from './landing_page/pricing/Pricingpage';
 import ProductPage from './landing_page/products/ProductPage';
 import SupportPage from './landing_page/support/Support';
+import NotFound from './landing_page/notFound/NotFound';
 
 
 
@@ -24,6 +25,7 @@ root.render(
     <Route path='/pricing' element={<PricingPage/>}/>
     <Route path='/product' element={<ProductPage/>}/>
     <Route path='/support' element={<SupportPage/>}/>
+    <Route path='*' element={<NotFound/>}/>
   </Routes>
   <Footer/>
   </BrowserRouter>
