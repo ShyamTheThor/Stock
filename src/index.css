@@ -16,3 +16,18 @@ code {
   margin-left: 50px;
 
 }
+
+#full-container{
+  background-color: rgb(56, 126, 209);
+  color: white;
+}
+
+#wrapper{
+  margin: 0 100px;
+  display: flex;
+  justify-content: space-around;
+}
+#below-1{
+  display: flex;
+  justify-content: space-around;
+}
