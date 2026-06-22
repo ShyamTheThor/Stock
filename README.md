@@ -1,65 +1,78 @@
-# Zerodha Clone
+# Zerodha Dashboard Backend
 
-A full-stack project cloning the Zerodha landing page experience. This repository contains the frontend implementation using React, Bootstrap, and Font Awesome.
+This is the backend service for the Zerodha Dashboard clone application. It is built using **Node.js**, **Express.js**, and **MongoDB**.
+
+## Features
+
+- REST API for fetching and managing user portfolio data.
+- Built-in endpoints to populate the database with dummy initial data for Holdings and Positions.
+- Uses **Mongoose** for data modeling.
+- (Planned) User authentication using Passport.js.
+
+## Tech Stack
+
+- **Node.js**
+- **Express.js** - Web Framework
+- **MongoDB** - Database
+- **Mongoose** - Object Data Modeling (ODM) library
+- **dotenv** - Environment variable management
+- **Cors** & **Body-Parser** - Middlewares
 
 ## Project Structure
 
-- **frontend/**: The React application for the user interface.
-- **backend/**: (Placeholder) For server-side logic and APIs.
-
-## Frontend Features
-
-- **Multi-section Landing Page**: Includes Hero, Awards, Stats, Pricing, and Education sections.
-- **Navigation**: Fully functional Navbar and Footer components.
-- **Styling**: Leverages Bootstrap 5 for layout and responsiveness, with custom CSS for fine-tuning.
-- **Icons**: Integrated Font Awesome for professional iconography.
-- **Routing**: Client-side routing with `react-router-dom`.
+```
+backend/
+├── model/                  # Mongoose models (Holdings, Orders, Positions)
+├── schemas/                # Mongoose schemas (Holdings, Orders, Positions)
+├── index.js                # Main entry point and Express app configuration
+├── package.json            # Project dependencies and scripts
+└── .env                    # Environment variables (needs to be created)
+```
 
 ## Getting Started
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) (v14+)
-- npm (comes with Node.js)
+- [Node.js](https://nodejs.org/) installed
+- [MongoDB](https://www.mongodb.com/) installed or a MongoDB Atlas connection string
 
 ### Installation
 
-1. Clone the repository:
+1. Navigate to the backend directory:
    ```bash
-   git clone <repository-url>
+   cd backend
    ```
 
-2. Navigate to the frontend directory:
-   ```bash
-   cd zero/frontend
-   ```
-
-3. Install dependencies:
+2. Install dependencies:
    ```bash
    npm install
    ```
 
-### Running the App
+3. Create a `.env` file in the root of the `backend` directory and add your MongoDB connection string and Port:
+   ```env
+   PORT=3002
+   MONGO_URI=your_mongodb_connection_string_here
+   ```
 
-To start the development server:
+### Running the Server
+
+Start the development server using nodemon:
 
 ```bash
 npm start
 ```
+The server will start running on `http://localhost:3002` (or your defined PORT).
 
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## API Endpoints
 
-## Built With
+### Seed Data
+The application provides two utility endpoints to seed the MongoDB database with initial mock data:
 
-- [React](https://reactjs.org/) - Frontend framework
-- [Bootstrap 5](https://getbootstrap.com/) - CSS framework
-- [Font Awesome](https://fontawesome.com/) - Icon set
-- [React Router](https://reactrouter.com/) - Routing library
+- **`GET /addHoldings`**: Clears existing holdings and inserts predefined dummy holdings data.
+- **`GET /addPositions`**: Clears existing positions and inserts predefined dummy positions data.
 
-## Screenshots
+## Models
 
-*(Add screenshots of your application here)*
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
+- **Holdings**: Represents long-term stock holdings (CNC).
+- **Positions**: Represents current active positions (Intraday/Delivery).
+- **Orders**: Represents the user's order history.
