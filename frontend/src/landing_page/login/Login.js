@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-function Signup() {
-    const [formData, setFormData] = useState({ name: '', email: '', password: '' });
+function Login() {
+    const [formData, setFormData] = useState({ email: '', password: '' });
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
 
@@ -15,7 +15,7 @@ function Signup() {
         setError('');
         setLoading(true);
         try {
-            const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/signup`, {
+            const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),
@@ -37,15 +37,15 @@ function Signup() {
 
     return (
         <>
-            {/* Top Banner — your original OpenAcc style */}
+            {/* Top Banner — same as Signup */}
             <div className='container p-5 mb-2 text-center'>
-                <h1 className='mt-5'>Open a Zerodha account</h1>
+                <h1 className='mt-5'>Login to your account</h1>
                 <p className='mt-3'>
                     Modern platforms and apps, ₹0 investments, and flat ₹20 intraday and F&O trades.
                 </p>
             </div>
 
-            {/* Signup Form — centered card */}
+            {/* Login Form — same card style as Signup */}
             <div className='container mb-5' style={{ maxWidth: '460px' }}>
                 <div style={{
                     border: '1px solid #e0e0e0',
@@ -68,20 +68,6 @@ function Signup() {
                     )}
 
                     <form onSubmit={handleSubmit}>
-                        {/* Full Name */}
-                        <div className='mb-4'>
-                            <input
-                                type='text'
-                                name='name'
-                                className='form-control form-control-lg'
-                                placeholder='Your full name'
-                                value={formData.name}
-                                onChange={handleChange}
-                                required
-                                style={{ borderRadius: '3px', fontSize: '15px' }}
-                            />
-                        </div>
-
                         {/* Email */}
                         <div className='mb-4'>
                             <input
@@ -102,10 +88,9 @@ function Signup() {
                                 type='password'
                                 name='password'
                                 className='form-control form-control-lg'
-                                placeholder='Create a password'
+                                placeholder='Your password'
                                 value={formData.password}
                                 onChange={handleChange}
-                                minLength={6}
                                 required
                                 style={{ borderRadius: '3px', fontSize: '15px' }}
                             />
@@ -119,20 +104,20 @@ function Signup() {
                                 style={{ width: '100%', borderRadius: '3px', fontSize: '15px', fontWeight: '600' }}
                                 disabled={loading}
                             >
-                                {loading ? 'Creating Account...' : 'Sign up for free'}
+                                {loading ? 'Logging in...' : 'Login'}
                             </button>
                         </div>
                     </form>
 
                     <p className='text-center mt-4 mb-0' style={{ fontSize: '13px', color: '#666' }}>
-                        Already have an account?{' '}
-                        <Link to='/login' style={{ color: '#387ed1', fontWeight: '600', textDecoration: 'none' }}>
-                            Login
+                        Don't have an account?{' '}
+                        <Link to='/signup' style={{ color: '#387ed1', fontWeight: '600', textDecoration: 'none' }}>
+                            Sign up for free
                         </Link>
                     </p>
                 </div>
 
-                {/* Footer note like real Zerodha signup */}
+                {/* Footer note — same as Signup */}
                 <p className='text-center mt-4' style={{ fontSize: '12px', color: '#999', lineHeight: '1.8' }}>
                     By continuing, I agree to the{' '}
                     <a href='/' style={{ color: '#387ed1', textDecoration: 'none' }}>Terms & Conditions</a>
@@ -144,4 +129,4 @@ function Signup() {
     );
 }
 
-export default Signup;
+export default Login;

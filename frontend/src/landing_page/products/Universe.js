@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 function Universe() {
     return (
@@ -51,7 +52,7 @@ function Universe() {
                         Investment research platform that offers detailed insights on stocks, sectors, supply chains, and more.
                     </p>
                 </div>
-                <button className=' p-2 btn btn-primary mt-5 mb-5' style={{width:"20%",margin:"0px auto"}}>Sign Up for free</button>
+                <Link to='/signup' className='btn btn-primary mt-5 mb-5 p-2' style={{width:"20%",margin:"0px auto"}}>Sign Up for Free</Link>
             </div>
         </div>
     );
