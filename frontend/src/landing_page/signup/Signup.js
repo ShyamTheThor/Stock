@@ -10,12 +10,15 @@ function Signup() {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
+    const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3002';
+    const DASHBOARD_URL = process.env.REACT_APP_DASHBOARD_URL || 'http://localhost:3001';
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
         setLoading(true);
         try {
-            const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/signup`, {
+            const res = await fetch(`${BACKEND_URL}/signup`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),
@@ -26,7 +29,7 @@ function Signup() {
             } else {
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('userName', data.name);
-                window.location.href = process.env.REACT_APP_DASHBOARD_URL;
+                window.location.href = DASHBOARD_URL;
             }
         } catch (err) {
             setError('Could not connect to server. Make sure the backend is running.');

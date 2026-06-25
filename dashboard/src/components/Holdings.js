@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import axios, { all } from "axios";
+import axios from "axios";
 import { VerticalGraph } from "./VerticalGraph";
+
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:3002";
 
 // import { holdings } from "../data/data";
 
@@ -8,9 +10,10 @@ const Holdings = () => {
   const [allHoldings, setAllHoldings] = useState([]);
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_BACKEND_URL}/allHoldings`).then((res) => {
-      // console.log(res.data);
+    axios.get(`${BACKEND_URL}/allHoldings`).then((res) => {
       setAllHoldings(res.data);
+    }).catch((err) => {
+      console.error("Holdings fetch error:", err.message, err.response?.status, err.config?.url);
     });
   }, []);
 
