@@ -1,230 +1,233 @@
-# 🟢 Zerodha Clone — Full Stack Trading Platform
+# 📈 Stock - Zerodha Clone
 
-A full-stack clone of [Zerodha](https://zerodha.com), India's largest stock broker. Built with React, Node.js, Express, and MongoDB.
+A full-stack stock trading platform inspired by Zerodha, built using the MERN stack. The project includes a responsive landing page, user authentication, portfolio dashboard, holdings management, and stock trading features.
 
----
-
-## 📸 Project Structure
-
-```
-zero/
-├── frontend/       → Landing page (React) — Home, About, Products, Pricing, Support, Signup, Login
-├── dashboard/      → Trading dashboard (React) — Holdings, Positions, Orders, Funds, Watchlist
-└── backend/        → REST API (Node.js + Express) — Auth, Holdings, Positions, Orders
-```
+🌐 **Live Demo:** https://stock-two-liart.vercel.app
 
 ---
 
-## ✨ Features
+# 🚀 Features
 
-### 🌐 Frontend (Landing Page)
-- Beautiful Zerodha-style landing page
-- Pages: Home, About, Products, Pricing, Support
-- **Authentication** — Signup & Login with JWT
-- Redirects to Dashboard after successful login
-- Fully responsive with Bootstrap
+### Landing Page
 
-### 📊 Dashboard
-- Live Holdings table with P&L calculation
-- Positions tracker
-- Orders management
-- Funds overview
-- Watchlist with Buy window
-- Charts powered by Chart.js
+* Responsive Zerodha-inspired UI
+* Products, Pricing, Support, and About pages
+* Login and Signup pages
+* Dashboard redirection
 
-### ⚙️ Backend (REST API)
-- `POST /signup` — Register new user (bcrypt password hashing)
-- `POST /login` — Login and receive JWT token
-- `GET /allHoldings` — Fetch all stock holdings
-- `GET /allPositions` — Fetch all positions
-- `POST /newOrder` — Place a new order
-- MongoDB Atlas for cloud database
+### Authentication
 
----
+* User Registration
+* User Login
+* JWT Authentication
+* Protected Routes
 
-## 🛠️ Tech Stack
+### Dashboard
 
-| Layer | Technology |
-|---|---|
-| Frontend | React 19, React Router, Bootstrap |
-| Dashboard | React 18, MUI, Chart.js, Axios |
-| Backend | Node.js, Express 5, Mongoose |
-| Database | MongoDB Atlas |
-| Auth | bcryptjs + JSON Web Token (JWT) |
-| Deployment | Vercel (Frontend + Dashboard), Render (Backend) |
+* Portfolio Overview
+* Holdings Management
+* Positions Tracking
+* Buy Stock Feature
+* Real-time Charts and Analytics
+* Watchlist Management
+
+### Backend
+
+* REST API built with Express.js
+* MongoDB Database
+* JWT Authentication
+* CORS Configuration
+* Environment Variables Support
 
 ---
 
-## 🚀 Running Locally
+# 🛠️ Tech Stack
 
-### Prerequisites
-- Node.js v18+
-- npm
-- MongoDB Atlas account (free)
+## Frontend
 
-### 1. Clone the repo
+* React.js
+* React Router DOM
+* CSS3
+* Material UI
+
+## Dashboard
+
+* React.js
+* Axios
+* Chart.js
+* Material UI
+
+## Backend
+
+* Node.js
+* Express.js
+* MongoDB
+* Mongoose
+* JWT Authentication
+
+## Deployment
+
+* Frontend: Vercel
+* Dashboard: Vercel
+* Backend: Render
+* Database: MongoDB Atlas
+
+---
+
+# 📂 Project Structure
 
 ```bash
-git clone https://github.com/your-username/zerodha-clone.git
-cd zerodha-clone
+Stock/
+│
+├── backend/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── model/
+│   ├── routes/
+│   ├── index.js
+│   └── package.json
+│
+├── dashboard/
+│   ├── public/
+│   ├── src/
+│   └── package.json
+│
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   └── package.json
+│
+└── README.md
 ```
 
-### 2. Setup Backend
+---
+
+# ⚙️ Installation
+
+## Clone Repository
+
+```bash
+git clone https://github.com/ShyamTheThor/Stock.git
+cd Stock
+```
+
+---
+
+# Backend Setup
 
 ```bash
 cd backend
 npm install
-```
-
-Create a `.env` file in the `backend/` folder:
-
-```env
-MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/zerodha
-JWT_SECRET=your_secret_key_here
-FRONTEND_URL=http://localhost:3000
-DASHBOARD_URL=http://localhost:3001
-PORT=3002
-```
-
-Start the backend:
-
-```bash
 npm start
 ```
-> Runs on `http://localhost:3002`
+
+Runs on:
+
+```bash
+http://localhost:3002
+```
 
 ---
 
-### 3. Setup Frontend
+# Frontend Setup
 
 ```bash
 cd frontend
 npm install
-```
-
-Create a `.env` file in the `frontend/` folder:
-
-```env
-REACT_APP_BACKEND_URL=http://localhost:3002
-REACT_APP_DASHBOARD_URL=http://localhost:3001
-```
-
-Start the frontend:
-
-```bash
 npm start
 ```
-> Runs on `http://localhost:3000`
+
+Runs on:
+
+```bash
+http://localhost:3000
+```
 
 ---
 
-### 4. Setup Dashboard
+# Dashboard Setup
 
 ```bash
 cd dashboard
 npm install
-```
-
-Create a `.env` file in the `dashboard/` folder:
-
-```env
-REACT_APP_BACKEND_URL=http://localhost:3002
-PORT=3001
-```
-
-Start the dashboard:
-
-```bash
 npm start
 ```
-> Runs on `http://localhost:3001`
+
+Runs on:
+
+```bash
+http://localhost:3001
+```
 
 ---
 
+# 🔐 Environment Variables
 
+Create a `.env` file inside the `backend` folder.
 
-## 🔐 Environment Variables Reference
-
-### Backend (`backend/.env`)
 ```env
-MONGO_URI=           # MongoDB Atlas connection string
-JWT_SECRET=          # Secret key for JWT signing
-FRONTEND_URL=        # Deployed frontend URL (for CORS)
-DASHBOARD_URL=       # Deployed dashboard URL (for CORS)
-PORT=3002            # Optional, defaults to 3002
-```
-
-### Frontend (`frontend/.env`)
-```env
-REACT_APP_BACKEND_URL=     # Backend API base URL
-REACT_APP_DASHBOARD_URL=   # Dashboard app URL (redirect after login)
-```
-
-### Dashboard (`dashboard/.env`)
-```env
-REACT_APP_BACKEND_URL=     # Backend API base URL
-PORT=3001                  # Local only — Vercel ignores this
+PORT=3002
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+FRONTEND_URL=http://localhost:3000
+DASHBOARD_URL=http://localhost:3001
 ```
 
 ---
 
-## 📁 Folder Structure (Detailed)
+# 🚀 Deployment
 
+## Backend (Render)
+
+```text
+Root Directory: backend
+Build Command: npm install
+Start Command: npm start
 ```
-zero/
-├── backend/
-│   ├── model/
-│   │   ├── HoldingsModel.js
-│   │   ├── OrdersModel.js
-│   │   ├── PositionsModel.js
-│   │   └── UserModel.js
-│   ├── schemas/
-│   ├── index.js
-│   ├── .env              ← (not committed)
-│   └── .env.example      ← (safe to commit)
-│
-├── frontend/
-│   ├── public/
-│   │   └── media/images/ ← All SVGs and PNGs
-│   ├── src/
-│   │   └── landing_page/
-│   │       ├── home/
-│   │       ├── about/
-│   │       ├── products/
-│   │       ├── pricing/
-│   │       ├── support/
-│   │       ├── signup/
-│   │       ├── login/
-│   │       ├── Navbar.js
-│   │       └── Footer.js
-│   ├── .env              ← (not committed)
-│   └── .env.example      ← (safe to commit)
-│
-└── dashboard/
-    ├── src/
-    │   └── components/
-    │       ├── Home.js
-    │       ├── Dashboard.js
-    │       ├── WatchList.js
-    │       ├── Holdings.js
-    │       ├── Positions.js
-    │       ├── Orders.js
-    │       ├── Funds.js
-    │       ├── Menu.js
-    │       ├── TopBar.js
-    │       └── BuyActionWindow.js
-    ├── .env              ← (not committed)
-    └── .env.example      ← (safe to commit)
+
+## Frontend (Vercel)
+
+```text
+Framework: Create React App
+Root Directory: frontend
+Build Command: npm run build
+Output Directory: build
+```
+
+## Dashboard (Vercel)
+
+```text
+Framework: Create React App
+Root Directory: dashboard
+Build Command: npm run build
+Output Directory: build
 ```
 
 ---
 
-## 🧑‍💻 Author
 
-Built by **Shyam** as part of the Apna College full-stack project series.
+# 🎯 Future Improvements
+
+* Real-time stock prices
+* WebSocket integration
+* Dark Mode
+* Transaction History
+* Portfolio Analytics
+* Stock Search and Filtering
+* Email Verification
+* Password Reset
 
 ---
 
-## 📄 License
+# 👨‍💻 Author
 
-This project is for **educational purposes only**. It is not affiliated with or endorsed by Zerodha.
+**Shyam M**
+
+* GitHub: https://github.com/ShyamTheThor
+
+
+---
+
+# ⭐ Support
+
+If you found this project helpful, please consider giving it a ⭐ on GitHub.
